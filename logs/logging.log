@@ -1,6 +1,1 @@
-[2024-12-25 19:16:59,486: INFO: main: This is an info message in data-science-project]
-[2024-12-25 19:16:59,486: ERROR: main: This is an error message]
-[2024-12-25 19:16:59,487: WARNING: main: This is a warning message]
-[2024-12-25 19:17:08,875: INFO: main: This is an info message in data-science-project]
-[2024-12-25 19:17:08,876: ERROR: main: This is an error message]
-[2024-12-25 19:17:08,876: WARNING: main: This is a warning message]
+[2024-12-25 19:22:33,511: INFO: main: Welcome to data-science-project. The project is started and is in progress. P.S:- This is an info message in data-science-project ]
