@@ -1,1 +1,6 @@
 myenv/
+logs/
+*.logs
+*.pyc
+*.swp
+artifacts/

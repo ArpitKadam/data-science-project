@@ -1,1 +1,37 @@
-[2024-12-25 19:22:33,511: INFO: main: Welcome to data-science-project. The project is started and is in progress. P.S:- This is an info message in data-science-project ]
+[2024-12-26 02:03:20,142: INFO: main: >>>>>> stage Data Ingestion Stage started <<<<<<]
+[2024-12-26 02:03:20,145: INFO: common: Yaml file: config\config.yaml read successfully]
+[2024-12-26 02:03:20,146: INFO: common: Yaml file: params.yaml read successfully]
+[2024-12-26 02:03:20,147: INFO: common: Yaml file: schema.yaml read successfully]
+[2024-12-26 02:03:20,148: INFO: common: Created directory at: ./artifacts]
+[2024-12-26 02:03:20,150: INFO: common: Created directory at: ./artifacts/data_ingestion]
+[2024-12-26 02:03:20,476: INFO: data_ingestion: artifacts\data_ingestion\data.zip downloaded successfully.
+Headers: Connection: close
+Content-Length: 23329
+Cache-Control: max-age=300
+Content-Security-Policy: default-src 'none'; style-src 'unsafe-inline'; sandbox
+Content-Type: application/zip
+ETag: "c69888a4ae59bc5a893392785a938ccd4937981c06ba8a9d6a21aa52b4ab5b6e"
+Strict-Transport-Security: max-age=31536000
+X-Content-Type-Options: nosniff
+X-Frame-Options: deny
+X-XSS-Protection: 1; mode=block
+X-GitHub-Request-Id: CB26:08F2:12CB41:179D1F:676C61C3
+Accept-Ranges: bytes
+Date: Wed, 25 Dec 2024 20:33:20 GMT
+Via: 1.1 varnish
+X-Served-By: cache-bom4726-BOM
+X-Cache: HIT
+X-Cache-Hits: 0
+X-Timer: S1735158801.511811,VS0,VE1
+Vary: Authorization,Accept-Encoding,Origin
+Access-Control-Allow-Origin: *
+Cross-Origin-Resource-Policy: cross-origin
+X-Fastly-Request-ID: 92ebafac62e058d2a556bf88321c0e3ab476504b
+Expires: Wed, 25 Dec 2024 20:38:20 GMT
+Source-Age: 87
+
+]
+[2024-12-26 02:03:20,540: INFO: data_ingestion: Extracted files to artifacts\data_ingestion]
+[2024-12-26 02:03:20,540: INFO: main: >>>>>> stage Data Ingestion Stage completed <<<<<< 
+
+x==========x]
