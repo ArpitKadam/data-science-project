@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wine Quality Predictor</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+            min-height: 100vh;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .container {
+            position: relative;
+            z-index: 1;
+            background: rgb(0, 0, 0);
+            padding: 50px;
+            border-radius: 50px;
+            max-width: 650px;
+            width: 90%; /* Ensure it's not too wide on smaller screens */
+            box-shadow: 0 60px 100px rgb(0, 0, 0);
+            transition: all 0.3s ease; /* Smooth transitions */
+        }
+
+        .title-box {
+            background-color: rgba(255, 255, 255, 0.8); /* White background for the box */
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 30px; /* Adjust as needed for spacing */
+        }
+
+        h2 {
+            text-align: center;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            color: #000000;
+            margin: 0; /* Remove default margin for the h2 */
+        }
+
+        .form-row {
+            margin-bottom: 20px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-row label {
+            font-weight: 400;
+            margin-bottom: 8px;
+            color: #07f5cd;
+        }
+
+        .input-text {
+            width: 100%;
+            padding: 15px;
+            border: none;
+            border-radius: 8px;
+            background-color: rgba(255, 255, 255, 0.15);
+            color: #ffffff;
+            transition: background-color 0.1s ease, border 0.1s ease;
+            box-sizing: border-box;
+        }
+
+        .input-text::placeholder {
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .input-text:focus {
+            background-color: rgba(255, 255, 255, 0.25);
+            outline: none; /* Remove the default focus outline */
+        }
+
+        .register {
+            background-color: #ff1100; /* Bootstrap Success Button Color */
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            width: 100%;
+            transition: background-color 0.3s ease;
+        }
+
+        .register:hover {
+            background-color: hsl(120, 79%, 43%); /* Darker shade for hover */
+        }
+
+        .form-row-last {
+            margin-top: 20px; /* Add some margin before the submit button */
+        }
+
+        /* Optional: Lift effect on hover */
+        .input-text:hover{
+            transform: translateY(-2px); /* Subtle lift on hover */
+            box-shadow: 0 13px 10px rgb(255, 0, 0); /* Add a slight shadow */
+        }
+
+        /* Optional: Add transition to container for hover effect */
+        .container:hover {
+            box-shadow: 0 12px 40px rgb(0, 0, 0);
+            transform: scale(1.01); /* Slightly scale up on hover for depth effect */
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+            .title-box {
+                padding: 10px;
+                margin-bottom: 20px;
+            }
+             h2 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="title-box">
+           <h2>Please Fill The Information</h2>
+        </div>
+        <form class="form-detail" action="/predict" method="post">
+            <div class="form-row">
+                <label for="fixed_acidity">Fixed Acidity:</label>
+                <input type="text" name="fixed_acidity" id="fixed_acidity" class="input-text" placeholder="Enter fixed acidity" required>
+            </div>
+            <div class="form-row">
+                <label for="volatile_acidity">Volatile Acidity:</label>
+                <input type="text" name="volatile_acidity" id="volatile_acidity" class="input-text" placeholder="Enter volatile acidity" required>
+            </div>
+            <div class="form-row">
+                <label for="citric_acid">Citric Acid:</label>
+                <input type="text" name="citric_acid" id="citric_acid" class="input-text" placeholder="Enter citric acid" required>
+            </div>
+            <div class="form-row">
+                <label for="residual_sugar">Residual Sugar:</label>
+                <input type="text" name="residual_sugar" id="residual_sugar" class="input-text" placeholder="Enter residual sugar" required>
+            </div>
+            <div class="form-row">
+                <label for="chlorides">Chlorides:</label>
+                <input type="text" name="chlorides" id="chlorides" class="input-text" placeholder="Enter chlorides" required>
+            </div>
+            <div class="form-row">
+                <label for="free_sulfur_dioxide">Free Sulfur Dioxide:</label>
+                <input type="text" name="free_sulfur_dioxide" id="free_sulfur_dioxide" class="input-text" placeholder="Enter free sulfur dioxide" required>
+            </div>
+            <div class="form-row">
+                <label for="total_sulfur_dioxide">Total Sulfur Dioxide:</label>
+                <input type="text" name="total_sulfur_dioxide" id="total_sulfur_dioxide" class="input-text" placeholder="Enter total sulfur dioxide" required>
+            </div>
+            <div class="form-row">
+                <label for="density">Density:</label>
+                <input type="text" name="density" id="density" class="input-text" placeholder="Enter density" required>
+            </div>
+            <div class="form-row">
+                <label for="pH">pH:</label>
+                <input type="text" name="pH" id="pH" class="input-text" placeholder="Enter pH value" required>
+            </div>
+             <div class="form-row">
+                <label for="sulphates">Sulphates:</label>
+                <input type="text" name="sulphates" id="sulphates" class="input-text" placeholder="Enter sulphates" required>
+            </div>
+            <div class="form-row">
+                <label for="alcohol">Alcohol:</label>
+                <input type="text" name="alcohol" id="alcohol" class="input-text" placeholder="Enter alcohol content" required>
+            </div>
+             <div class="form-row-last">
+                <input type="submit" name="register" class="register" value="Predict">
+            </div>
+        </form>
+    </div>
+</body>
+</html>

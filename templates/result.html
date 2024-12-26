@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediction Result</title>
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet"> 
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+            background-image: url('static/assets/img/background.jpg');
+            background-size: cover;
+            background-position: center;
+            min-height: 100vh;
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: none; /* Hide default cursor */
+        }
+
+        .container {
+            position: relative;
+            z-index: 1;
+            background: rgb(0, 0, 0);
+            padding: 30px;
+            border-radius: 15px;
+            max-width: 650px;
+            width: 90%;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+            transition: all 0.3s ease;
+            box-sizing: border-box;
+        }
+
+        .title-box {
+            background-color: rgba(255, 255, 255, 0.411);
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+           
+        }
+
+
+         h2 {
+             text-align: center;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+             color: #ffffff;
+             margin: 0;
+        }
+
+        .result-content {
+            margin-bottom: 30px;
+            color: #eee;
+        }
+        .result-content h3{
+            font-weight: 500;
+           margin-bottom: 15px;
+           color: #ccc;
+        }
+        .result-content ul {
+            list-style: none;
+            padding: 0;
+           
+        }
+
+        .result-content li {
+            margin-bottom: 10px;
+            line-height: 1.6;
+           
+        }
+          .result-content li strong {
+           color: #fff;
+           font-weight: 500;
+        }
+
+        .result-content p {
+           line-height: 1.6;
+           font-weight: 400;
+           color: #fff;
+        }
+
+        .back-button {
+            display: block;
+            text-align: center;
+            background-color: #007bff;
+            color: white;
+            padding: 12px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        .back-button:hover {
+            background-color: #0056b3;
+             transform: translateY(-2px);
+        }
+
+        .form-row-last {
+            margin-top: 20px;
+        }
+
+           .custom-cursor {
+            position: fixed;
+            width: 25px;
+            height: 25px;
+            border: 2px solid #000000;
+            border-radius: 50%;
+            pointer-events: none; /* Makes it not interfere with clicks */
+            transform: translate(-50%, -50%); /* Center it on the mouse */
+            transition: transform 0.1s ease, border-color 0.3s ease;
+            z-index: 1000; /* Ensure it's above other elements */
+        }
+
+        .custom-cursor.active {
+            transform: translate(-50%, -50%) scale(1.5); /* Scale up when active */
+             border-color: #007bff; /* Bootstrap Success Button Color */
+        }
+         .back-button:hover {
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2); /* Add a slight shadow */
+        }
+
+        /* Optional: Add transition to container for hover effect */
+          .container:hover {
+             box-shadow: 0 12px 40px rgba(0,0,0,0.2);
+              transform: scale(1.01); /* Slightly scale up on hover for depth effect */
+        }
+
+
+         @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+               .title-box {
+                  padding: 10px;
+                  margin-bottom: 20px;
+            }
+             h2 {
+                font-size: 1.5rem;
+             }
+        }
+    </style>
+</head>
+<body>
+     <div class="custom-cursor" id="custom-cursor"></div>
+    <div class="container">
+         <div class="title-box">
+           <h2>Prediction Result</h2>
+        </div>
+        <div class="result-content">
+            <h3>Your Input Data:</h3>
+            <ul>
+                <li><strong>Fixed Acidity:</strong> {{ fixed_acidity }} </li>
+                <li><strong>Volatile Acidity:</strong> {{ volatile_acidity }}</li>
+                <li><strong>Citric Acid:</strong> {{ citric_acid }}</li>
+                <li><strong>Residual Sugar:</strong> {{ residual_sugar }}</li>
+                <li><strong>Chlorides:</strong> {{ chlorides }}</li>
+                <li><strong>Free Sulfur Dioxide:</strong> {{ free_sulfur_dioxide }}</li>
+                <li><strong>Total Sulfur Dioxide:</strong> {{ total_sulfur_dioxide }}</li>
+                <li><strong>Density:</strong> {{ density }}</li>
+                <li><strong>pH:</strong> {{ pH }}</li>
+                <li><strong>Sulphates:</strong> {{ sulphates }}</li>
+                <li><strong>Alcohol:</strong> {{ alcohol }} </li>
+            </ul>
+            <h3>Prediction:</h3>
+            <p>The predicted value is: <strong>{{ prediction }}</strong></p>
+        </div>
+        <div class="form-row-last">
+            <a href="/" class="back-button">Go Back</a>
+        </div>
+    </div>
+
+        <script>
+        const cursor = document.getElementById('custom-cursor');
+        
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.pageX + 'px';
+            cursor.style.top = e.pageY + 'px';
+        });
+        
+        document.addEventListener('mousedown', () => {
+            cursor.classList.add('active');
+        });
+
+         document.addEventListener('mouseup', () => {
+            cursor.classList.remove('active');
+        });
+           // Optional: Add transition to container for hover effect
+          const container = document.querySelector('.container');
+            container.addEventListener('mouseover', () => {
+               cursor.style.borderColor = '#e91414'
+            });
+          container.addEventListener('mouseout', () => {
+               cursor.style.borderColor = '#fff'
+            });
+    </script>
+</body>
+</html>
