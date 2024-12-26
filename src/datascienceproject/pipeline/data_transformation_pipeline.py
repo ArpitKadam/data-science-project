@@ -19,8 +19,6 @@ class DataTransformationTrainingPipeline:
                 data_transformation_config = config.get_data_transformation_config()
                 data_transformation = DataTransformation(config=data_transformation_config)
                 data_transformation.train_test_split()
-                with open(Path("artifacts/data_transformation/status.txt"), "w") as f:
-                    f.write("Data Transformation Completed")
             else:
                 raise Exception("All columns are not valid")
         except Exception as e:
